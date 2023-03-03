@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.IUserDAO">
+	
+	<!-- 뉴스 조회-->
+	<select id="listUser" resultType="com.example.vo.UserEntity">
+		SELECT userID,userPassword,userName,userGender,userEmail FROM user
+	</select>	
+	
+	<insert id="insertUser" parameterType="com.example.vo.UserEntity">
+	    INSERT INTO user (userID, userPassword, userName) VALUES (#{userID}, #{userPassword}, #{userName})
+	</insert>
+	
+	<update id="updateUser" parameterType="com.example.vo.UserEntity">
+		UPDATE user SET userPassword=#{userPassword} WHERE userID=#{userID}
+	</update>
+	
+	<delete id="deleteUser" parameterType="com.example.vo.UserEntity">
+		DELETE FROM user WHERE userID=#{userID}
+	</delete>
+</mapper>
